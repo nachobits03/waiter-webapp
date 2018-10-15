@@ -40,8 +40,8 @@ app.get('/days', function(req, res){
     res.render('days');
 });
 
-app.get('/waiters', function(req, res){
-    res.render('waiters');
+app.get('/waiter-login', function(req, res){
+    res.render('waiter-login');
 });
 
 let PORT = process.env.PORT || 3005;
