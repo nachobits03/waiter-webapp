@@ -1,0 +1,87 @@
+.left{
+    /*   border:solid; */
+      float:left;
+      display:inline-block;
+      width:25%;
+      height:500px;
+    }
+    
+    .right{
+    /*   border:solid; */
+      padding-left:10px;
+      display:inline-block;
+      width:74.1%;
+      height:500px;
+    }
+    
+    .waiters{
+      padding-top:10px;
+      width:100%;
+      text-align:center;
+    }
+    .waiters table{
+      width:100%;
+      border:solid;
+      text-align:center;
+    }
+    
+    .waiters th{
+      border-bottom:solid;
+      background:silver;
+    }
+    
+    .waiters td{
+      height:60px;
+    }
+    .waiters td button{
+      width:100%;
+      height:100%;
+      font-size:40px;
+    }
+    
+    .waiters td button:hover{
+    background-color:grey;
+      color:white;
+    }
+    
+    .reset button{
+      background-color:red;
+      border: black 1px solid;
+      width:50%;
+      height:100%;
+      font-size:40px;
+      margin-top:20px;
+      border-radius:50px;
+      padding-top:6px;
+      color:white;
+      
+    }
+    
+    .weekSchedule{
+      padding-top:10px;
+      width:100%;
+      text-align:center;
+    }
+    
+    .weekSchedule table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    
+    .weekSchedule table{
+      width:100%;
+      border:solid;
+      text-align:center;
+    }
+    
+    .weekSchedule th{
+      border-bottom:solid;
+      width:14.28%;
+    }
+    
+    .weekSchedule td {
+      height:60px;
+      font-size:20px;
+      background-color:#d8dede;
+    }
+    
