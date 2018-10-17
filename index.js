@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 // const pg = require('pg');
 const app = express();
+// single table!!
 
 // const Pool = pg.Pool;
 
