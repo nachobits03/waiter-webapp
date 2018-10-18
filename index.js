@@ -1,9 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
+const WaiterRoutes = require('./routes/waiter-routes');
+
+
 const pg = require('pg');
 const app = express();
-
 
 const Pool = pg.Pool;
 
@@ -14,11 +16,14 @@ if (process.env.DATABASE_URL && !local) {
 }
 const connectionString = process.env.DATABASE_URL || 'postgresql://coder:pg123@localhost:5432/cafe';
 
-
 const pool = new Pool({
     connectionString,
     ssl: useSSL
 });
+
+// Factory Function instances
+
+const route = WaiterRoutes();
 
 
 app.use(bodyParser.json());
@@ -33,17 +38,15 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 
-app.get('/', function(req, res){
-    res.render('home');
-});
+app.get('/', route.home);
 
-app.get('/days', function(req, res){
-    res.render('days');
-});
+app.get('/days', route.days);
 
-app.get('/waiter-login', function(req, res){
-    res.render('waiter-login');
-});
+app.get('/waiter-login', route.waiterLog);
+
+app.get('/waiter/:waiter', route.shifts);
+
+app.post('/waiter-logged', route.logged);
 
 let PORT = process.env.PORT || 3005;
 
