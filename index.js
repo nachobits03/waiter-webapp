@@ -2,8 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const WaiterRoutes = require('./routes/waiter-routes');
-
-
+const waiterData = require('./services/waiterData')
 const pg = require('pg');
 const app = express();
 
@@ -22,8 +21,8 @@ const pool = new Pool({
 });
 
 // Factory Function instances
-
-const route = WaiterRoutes();
+const waiterdb = waiterData(pool);
+const route = WaiterRoutes(waiterdb);
 
 
 app.use(bodyParser.json());
