@@ -22,6 +22,10 @@ describe('The waiter web app queries for database', function () {
         assert.equal(['john', 'sandy', 'jack', 'nat'], factory.allWaiters());
     });
 
+it("Should return add monday tuesday and friday as shifts for nat"){
+    assert.equal(["monday", "tuesday", "friday"])
+}
+
     after(function () {
         pool.end();
     });
