@@ -1,24 +1,29 @@
-<form action="">
-  <label for="mon">Monday</label>
-  <input name='mon' value='monday'type='checkbox'>
+
+<form action="/waiter-logged" method="POST" class='form'>
   
-    <label for="tue">Tuesday</label>
-  <input name='tue' value='tuesday'type='checkbox'>
-  
-    <label for="wed">Wednesday</label>
-  <input name='wed' value='wednesday'type='checkbox'>
-  
-    <label for="thurs">Thursday</label>
-  <input name='thurs' value='thursday'type='checkbox'>
-  
-    <label for="fri">Friday</label>
-  <input name='fri' value='friday'type='checkbox'>
-  
-    <label for="sat">Saturday</label>
-  <input name='sat' value='saturday'type='checkbox'>
-  
-    <label for="sun">Sunday</label>
-  <input name='sun' value='sunday'type='checkbox'>
-  
-  <input type="submit" value='submit'>
+  <input type="radio" name='mon'value=1 id='shift'>
+    <input type="radio" name='tues'value=1 id='shift'>
+    <input type="radio" name='wed'value=1 id='shift'>
+    <input type="radio" name='thur'value=1 id='shift'>
+    <input type="radio" name='fri'value=1 id='shift'>
+    <input type="radio" name='sat'value=1 id='shift'>
+    <input type="radio" name='sun'value=1 id='shift'>
+    <input type="submit">
 </form>
+
+<h1>{{waiter}}</h1>
+
+  <label for="mon"><button class='button' >Monday</button></label>
+
+  <label for="tue"><button class='button' >Tuesday</button></label>
+
+  <label for="wed"><button class='button' >Wednesday</button></label>
+
+  <label for="thur"><button class='button' >Thursday</button></label>
+
+  <label for="fri"><button class='button' >Friday</button></label>
+
+  <label for="sat"><button class='button' >Saturday</button></label>
+
+  <label for="sun"><button class='button' >Sunday</button></label>
+

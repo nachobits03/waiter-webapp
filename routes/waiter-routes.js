@@ -11,19 +11,27 @@ module.exports = function () {
         res.render('days');
     }
     function shifts (req, res) {
-        res.render('waiter-shifts');
+        let waiter = req.waiter.params;
+        res.render('waiter-shifts',
+        waiter);
     }
 
     function logged (req, res) {
         let name = req.body.waiter;
         console.log(name)
-        res.redirect('/waiter/' + name);
+        res.redirect('/shifts/' + name);
     }
+
+     function update (req, res){
+         res.redirect
+     }
+
     return {
         waiterLog,
         home,
         days,
         shifts,
-        logged
+        logged,
+        update
     };
 };

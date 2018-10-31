@@ -32,10 +32,18 @@ app.use(bodyParser.urlencoded({
 
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
+    // helpers: {
+    //     'shifts':
+    //     function () {
+    //         if (this.selected) {
+    //             return 'shifts';
+    //         }
+    //     }
+    // }
 }));
 
 app.set('view engine', 'handlebars');
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', route.home);
 
@@ -43,9 +51,11 @@ app.get('/days', route.days);
 
 app.get('/waiter-login', route.waiterLog);
 
-app.get('/waiter/:waiter', route.shifts);
+app.get('/shifts/:waiter', route.shifts);
 
 app.post('/waiter-logged', route.logged);
+
+app.post('/shifts-update', route.update);
 
 let PORT = process.env.PORT || 3005;
 
