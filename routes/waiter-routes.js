@@ -1,4 +1,4 @@
-module.exports = function () {
+module.exports = function (factory, waiterdb) {
     function waiterLog (req, res) {
         res.render('waiter-login');
     }
@@ -7,7 +7,9 @@ module.exports = function () {
         res.render('home');
     }
 
-    function days (req, res) {
+    async function days (req, res) {
+        // let allWaiters = await waiterdb.allWaiters();
+        console.log(await factory.sort())
         res.render('days');
     }
     function shifts (req, res) {

@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
-const WaiterRoutes = require('./routes/waiter-routes');
-const waiterData = require('./services/waiterData')
+const WaiterRoutes = require('./routes/waiter-routes.js');
+const waiterfactory = require('./src/waiter-factory.js');
+const waiterData = require('./src/waiterdb.js');
+
 const pg = require('pg');
 const app = express();
 
@@ -22,7 +24,8 @@ const pool = new Pool({
 
 // Factory Function instances
 const waiterdb = waiterData(pool);
-const route = WaiterRoutes(waiterdb);
+const factory = waiterfactory(waiterdb);
+const route = WaiterRoutes(factory, waiterdb);
 
 
 app.use(bodyParser.json());
