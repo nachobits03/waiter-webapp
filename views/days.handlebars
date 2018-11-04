@@ -28,51 +28,17 @@
   <div class="weekSchedule">
     <table>
       <tr>
-        <th class='good'><h1>Monday</h1></th>
-        <th class='good'><h1>Tuesday</h1></th>
-        <th class='bad'><h1>Wednesday</h1></th>
-        <th class='good'><h1>Thursday</h1></th>
-        <th class='good'><h1>Friday</h1></th>
-        <th class='good'><h1>Saturday</h1></th>
-        <th class='good'><h1>Sunday</h1></th>
+        {{#each allDays}}
+        <th><h1>{{workday}}</h1></th>
+        {{/each}}
       </tr>
       {{!-- {{#each}} --}}
       <tr>
-        <td><strong>Waiter 1</strong></td>
-        <td><strong>Waiter 1</strong></td>
-        <td>N/A</td>
-        <td><strong>Waiter 1</strong></td>
-        <td><strong>Waiter 1</strong></td>
-        <td>N/A</td>
-        <td><strong>Waiter 1</strong></td>
+        {{#each allShifts}}
+        <td><strong>{{waiters.waiter}}</strong></td>
+{{/each}}
       </tr>
-       <tr>
-        <td>N/A</td>
-        <td><strong>Waiter 2</strong></td>
-        <td><strong>Waiter 2</strong></td>
-        <td><strong>Waiter 2</strong></td>
-        <td><strong>Waiter 2</strong></td>
-        <td><strong>Waiter 2</strong></td>
-        <td>N/A</td>
-      </tr>
-       <tr>
-        <td><strong>Waiter 3</strong></td>
-        <td><strong>Waiter 3</strong></td>
-        <td>N/A</td>
-        <td>N/A</td>
-        <td><strong>Waiter 3</strong></td>
-        <td><strong>Waiter 3</strong></td>
-        <td><strong>Waiter 3</strong></td>
-      </tr>
-       <tr>
-        <td><strong>Waiter 4</strong></td>
-        <td><strong>Waiter 4</strong></td>
-        <td>N/A</td>
-        <td><strong>Waiter 4</strong></td>
-        <td><strong>Waiter 4</strong></td>
-        <td><strong>Waiter 4</strong></td>
-        <td><strong>Waiter 4</strong></td>
-      </tr>
+
     </table>
   </div>
 </div>

@@ -2,7 +2,7 @@ create table workdays(
 workdayID serial not null primary key,
 workday text not null
 );
-INSERT INTO workdays (workday) VALUES ('n/a');
+
 INSERT INTO workdays (workday) VALUES ('monday');
 INSERT INTO workdays (workday) VALUES ('tuesday'); 
 INSERT INTO workdays (workday) VALUES ('wednesday');

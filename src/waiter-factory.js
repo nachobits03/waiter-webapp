@@ -3,24 +3,29 @@ module.exports = function (waiterdb) {
         let allShifts = await waiterdb.allShifts();
         let allWorkdays = await waiterdb.allDays();
         let waiterList = [];
-        // console.log(allWaiters)
+        // console.log('here', allShifts)
 
         for (let workdays of allWorkdays) {
             let stacker = [];
             let workday = workdays.workday;
 
             for (let shift of allShifts) {
+                // console.log(shift.workday)
                 if (workday === shift.workday) {
-                    stacker.push(shift.waiter);
+                    // console.log(shift.waiter)
+                    stacker.push(
+                        {waiter: shift.waiter}
+                        );
                 };
             }
-
-            waiterList.push([
-                { day: workday },
-                { waiters: stacker }
-            ]);
+            // console.log(stacker)
+            waiterList.push(
+                { day: workday,
+                 waiters: stacker }
+            );
         }
-        console.log(waiterList);
+        console.log('this', JSON.stringify(waiterList));
+        return waiterList
     }
     return {
         sort

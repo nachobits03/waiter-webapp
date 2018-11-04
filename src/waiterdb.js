@@ -2,6 +2,7 @@ module.exports = function (pool) {
     async function allShifts () {
         try {
             let shifts = await pool.query('select waiters.waiter, workdays.workday from waiters inner join shifts on waiters.waiterid = shifts.waiterid inner join workdays on workdays.workdayid = shifts.workdayid;');
+            // console.log(shifts.rows)
             return shifts.rows;
         } catch (err) {
             console.error(err);

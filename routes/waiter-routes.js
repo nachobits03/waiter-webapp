@@ -8,9 +8,14 @@ module.exports = function (factory, waiterdb) {
     }
 
     async function days (req, res) {
-        // let allWaiters = await waiterdb.allWaiters();
-        console.log(await factory.sort())
-        res.render('days');
+        let allShifts = await factory.sort();
+        let allDays = await waiterdb.allDays();
+
+        // console.log(await factory.sort())
+        res.render('days', {
+        allShifts,
+        allDays
+    });
     }
     function shifts (req, res) {
         let waiter = req.waiter.params;
