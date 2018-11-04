@@ -13,17 +13,15 @@ INSERT INTO workdays (workday) VALUES ('sunday');
 
 create table waiters(
     waiterID serial not null primary key,
-    waiter text not null,
-    waiterPW text not null
+    waiter text not null
 );
 
-INSERT INTO waiters (waiter, waiterPW) VALUES ('john', 'john');
-INSERT INTO waiters (waiter, waiterPW) VALUES ('sandy', 'sandy');
-INSERT INTO waiters (waiter, waiterPW) VALUES ('jack', 'jack');
-INSERT INTO waiters (waiter, waiterPW) VALUES ('nat', 'nat');
+INSERT INTO waiters (waiter) VALUES ('john');
+INSERT INTO waiters (waiter) VALUES ('sandy');
+INSERT INTO waiters (waiter) VALUES ('jack');
+INSERT INTO waiters (waiter) VALUES ('nat');
 
 CREATE TABLE shifts (
-    shiftID serial NOT NULL primary key,
     waiterID int,
     workdayID int,
     FOREIGN KEY (waiterID) REFERENCES waiters(waiterID),
