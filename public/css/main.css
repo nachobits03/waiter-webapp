@@ -1,37 +1,54 @@
-body a{
-color:black;
+body a {
+  color: black;
 }
 
-header{
-    text-align: center;
-    padding-top:15px;
-    font-size:50px;
-    font-family:"Courier New";
-    border-bottom:solid;
-    background:#5e2805;
-    font-weight:bold;
-    box-shadow: 10px 10px 20px black;
-    z-index: 3;
-  }
-  
-  .fa-coffee{
-    color:silver;
-    transform: rotateZ(-10deg)
-  }
-  
-nav{
-    float:right;
-    margin-right:15px;
-  }
-  
-  nav a {
-    color:white
-  }
-  
-  nav a:hover{
-  color:grey;  
-  }
-  
-  body{
-    background:#996a49;
-  }
+header {
+  text-align: center;
+  padding-top: 15px;
+  font-size: 50px;
+  font-family: "Courier New";
+  border-bottom: solid;
+  background: #5e2805;
+  font-weight: bold;
+  box-shadow: 10px 10px 20px black;
+  z-index: 3;
+}
+
+.fa-coffee {
+  color: silver;
+  transform: rotateZ(-10deg)
+}
+
+nav {
+  float: right;
+  margin-right: 15px;
+}
+
+nav a {
+  color: white
+}
+
+nav a:hover {
+  color: grey;
+}
+
+body {
+  background: #996a49;
+}
+
+.shift {
+  position: relative;
+  width: 30vw;
+  height:60vh;
+  margin-top: 20px;
+  background-color: brown;
+  margin: auto;
+  text-align: center;
+}
+
+.shift button {
+  display: block;
+  margin: auto;
+  width: 50%;
+  height: 15%;
+}
