@@ -25,7 +25,21 @@ module.exports = function (waiterdb) {
         console.log('this', waiterList);
         return waiterList;
     }
+
+    async function waiterCheck (name) {
+        let allWaiters = await waiterdb.allWaiters();
+        // console.log('here', waiters)
+        let waiters = allWaiters.map(name => name.waiter);
+        for (let waiter of waiters) {
+            if (name === waiter) {
+                console.log('here', waiter);
+                return true;
+            } 
+        }
+    }
+
     return {
-        sort
+        sort,
+        waiterCheck
     };
 };

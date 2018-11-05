@@ -18,15 +18,21 @@ module.exports = function (factory, waiterdb) {
     });
     }
     function shifts (req, res) {
-        let waiter = req.waiter.params;
+        let waiter = req.params.waiter;
         res.render('waiter-shifts',
-        waiter);
+        {waiter});
     }
 
-    function logged (req, res) {
+    async function logged (req, res) {
         let name = req.body.waiter;
-        console.log(name)
+        // console.log(name)
+        let checker = await factory.waiterCheck(name);
+        if(checker === true){
         res.redirect('/shifts/' + name);
+        }
+        else{
+            res.redirect('/waiter-login')
+        }
     }
 
      function update (req, res){

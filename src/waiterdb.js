@@ -11,7 +11,7 @@ module.exports = function (pool) {
 
     async function allWaiters () {
         try {
-            let waiters = await pool.query('select waiter from waiters;');
+            let waiters = await pool.query('select * from waiters;');
             return waiters.rows;
         } catch (err) {
             console.error(err);
