@@ -13,19 +13,17 @@ module.exports = function (waiterdb) {
                 // console.log(shift.workday)
                 if (workday === shift.workday) {
                     // console.log(shift.waiter)
-                    stacker.push(
-                        {waiter: shift.waiter}
-                        );
+                    stacker.push(shift.waiter);
                 };
             }
             // console.log(stacker)
             waiterList.push(
                 { day: workday,
-                 waiters: stacker }
+                    waiters: stacker }
             );
         }
-        console.log('this', JSON.stringify(waiterList));
-        return waiterList
+        console.log('this', waiterList);
+        return waiterList;
     }
     return {
         sort

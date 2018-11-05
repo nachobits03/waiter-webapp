@@ -1,44 +1,34 @@
-<div class="left">
-  <div class="waiters">
-    <table border:2>
-      <tr>
-        <th><h1>Waiters</h1></th>
-      </tr>
-      <tr>
-        <td><button>All Waiters</button></td>
-      </tr>
-      <tr>
-        <td><button>Waiter 1</button></td>
-      </tr>
-       <tr>
-        <td><button>Waiter 2</button></td>
-      </tr>
-       <tr>
-        <td><button>Waiter 3</button></td>
-      </tr>
-       <tr>
-        <td><button>Waiter 4</button></td>
-      </tr>
-    </table>
-<span class="reset"><a href="#"><button>Reset</button></a></span>
-  </div>
-  
-</div>
-<div class="right">
+
+
   <div class="weekSchedule">
-    <table>
-      <tr>
-        {{#each allDays}}
-        <th><h1>{{workday}}</h1></th>
-        {{/each}}
-      </tr>
-      {{!-- {{#each}} --}}
-      <tr>
-        {{#each allShifts}}
-        <td><strong>{{waiters.waiter}}</strong></td>
+
+<table>
+
+<tr>
+{{#each allDays}}
+<th><h1>{{workday}}</h1></th>
 {{/each}}
       </tr>
 
-    </table>
+
+      <tr>
+              {{#each allShifts}}
+     <td>
+       {{!-- <ul> --}}
+                {{#each waiters}}  
+       <strong><ul>{{this}}</ul></strong>
+       {{else}}
+              <strong><ul>N/A</ul></strong>
+             {{/each}}   
+       {{!-- </ul> --}}
+       </td>
+{{/each}}
+
+      </tr>
+  
+       
+
+</table>
+
+
   </div>
-</div>

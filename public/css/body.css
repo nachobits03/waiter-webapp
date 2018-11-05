@@ -1,18 +1,4 @@
-.left{
-    /*   border:solid; */
-      float:left;
-      display:inline-block;
-      width:25%;
-      height:500px;
-    }
-    
-    .right{
-    /*   border:solid; */
-      padding-left:10px;
-      display:inline-block;
-      width:74.1%;
-      height:500px;
-    }
+
     
     .waiters{
       padding-top:10px;
@@ -58,8 +44,9 @@
     }
     
     .weekSchedule{
+margin:auto;
       padding-top:10px;
-      width:100%;
+      width:90vw;
       text-align:center;
     }
     
@@ -72,11 +59,13 @@
       width:100%;
       border:solid;
       text-align:center;
+      table-layout: fixed;
+      white-space: nowrap;
     }
     
     .weekSchedule th{
       border-bottom:solid;
-      width:14.28%;
+      /* width:14.28%; */
     }
     
     .weekSchedule td {
@@ -85,3 +74,14 @@
       background-color:#d8dede;
     }
     
+    .weekSchedule th, td {
+margin: auto;
+width:11.5vw;
+  }
+
+  .weekSchedule td ul {
+  text-align: center;
+  margin-left:-3vw;
+  }
+   
+   
