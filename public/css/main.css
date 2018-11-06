@@ -36,19 +36,61 @@ body {
   background: #996a49;
 }
 
+.clicked{
+  background-color:green;
+}
+
 .shift {
   position: relative;
   width: 30vw;
-  height:60vh;
-  margin-top: 20px;
+  height:70vh;
+  padding-top: 10px;
   background-color: brown;
   margin: auto;
+  margin-top:30px;
   text-align: center;
+  border-bottom: solid;
+  background: #5e2805;
+  font-weight: bold;
+  box-shadow: 10px 10px 20px black;
+  z-index: 3;
+}
+
+.shift h2{
+  color:white;
 }
 
 .shift button {
   display: block;
   margin: auto;
-  width: 50%;
-  height: 15%;
+  width: 60%;
+  height: 9%;
+  margin-bottom:2px;
+  border:none;
+}
+
+.shift button:hover{
+background-color: grey;
+}
+
+.sub-form {
+  display:none;
+}
+
+.submit button{
+  width:40%;
+  background-color: green;
+  margin-top:10px;
+  border:none;
+  background:#996a49;
+  border:none;
+  box-shadow:  5px 5px 10px black;
+  transition:0.2s linear;
+}
+
+.submit button:hover{
+  color:black;
+  box-shadow:  10px 10px 20px black;
+    transition:0.2s linear;
+    background:#996a70;
 }

@@ -1,4 +1,4 @@
-
+<div class='sub-form'>
 <form action="/waiter-logged" method="POST" class='form'>
   
   <input type="radio" name='mon'value=0 id='shift'>
@@ -8,13 +8,14 @@
     <input type="radio" name='fri'value=0 id='shift'>
     <input type="radio" name='sat'value=0 id='shift'>
     <input type="radio" name='sun'value=0 id='shift'>
+    <input type="submit" name='submit'>
 
 </form>
+</div>
 
-
-
+<div class='card'>
 <div class='shift'>
-<h1>{{waiter}}</h1>
+<h2>Welcome {{waiter}}! Please select which days you're available for the week.</h2>
 
   <label for="mon"><button class='button' >Monday</button></label>
 
@@ -29,4 +30,7 @@
   <label for="sat"><button class='button' >Saturday</button></label>
 
   <label for="sun"><button class='button' >Sunday</button></label>
+
+  <label for="submit" class='submit'><button >Submit</button></label>
+</div>
 </div>
