@@ -27,3 +27,7 @@ CREATE TABLE shifts (
     FOREIGN KEY (waiterID) REFERENCES waiters(waiterID),
     FOREIGN KEY (workdayID) REFERENCES workdays(workdayID)
 );
+
+
+
+

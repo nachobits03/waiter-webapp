@@ -1,5 +1,5 @@
 <div class='sub-form'>
-<form action="/waiter-logged" method="POST" class='form'>
+<form action="/shifts-update" method="POST" class='subForm' id="formid">
   
   <input type="radio" name='mon'value=0 id='shift'>
     <input type="radio" name='tues'value=0 id='shift'>
@@ -8,7 +8,8 @@
     <input type="radio" name='fri'value=0 id='shift'>
     <input type="radio" name='sat'value=0 id='shift'>
     <input type="radio" name='sun'value=0 id='shift'>
-    <input type="submit" name='submit'>
+    <input type="text" name = 'name' value='{{waiter}}'>
+    <input type="submit" name='submit' >
 
 </form>
 </div>
@@ -31,6 +32,6 @@
 
   <label for="sun"><button class='button' >Sunday</button></label>
 
-  <label for="submit" class='submit'><button >Submit</button></label>
+  <label for='submit' class='submit'><button class='submitBut' form="formid">Submit</button></label>
 </div>
 </div>

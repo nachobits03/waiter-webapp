@@ -36,7 +36,8 @@ module.exports = function (factory, waiterdb) {
     }
 
      function update (req, res){
-         res.redirect
+        let name = req.body.name;
+         res.redirect('/shifts/' + name)
      }
 
     return {
