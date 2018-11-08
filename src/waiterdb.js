@@ -18,18 +18,32 @@ module.exports = function (pool) {
         }
     }
 
-        async function allDays () {
-            try {
-                let workdays = await pool.query('select workday from workdays;');
-                return workdays.rows;
-            } catch (err) {
-                console.error(err);
-            }
+    async function allDays () {
+        try {
+            let workdays = await pool.query('select workday from workdays;');
+            return workdays.rows;
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    async function waiter (waiter) {
+        try {
+            let currentWaiter = await pool.query('select 1 waiterid from waiters where waiter = $1 limit 1', [waiter]);
+            return currentWaiter.rows;
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    async function addShifts(waiter, shift){
+        
     }
 
     return {
         allShifts,
         allWaiters,
-        allDays
+        allDays,
+        waiter
     };
 };

@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', function () {
     let button = document.querySelectorAll('.button');
     let shift = document.querySelectorAll('#shift');
 
-    let days = [2, 3, 4, 5, 6, 7, 8];
+    let days = [1, 2, 3, 4, 5, 6, 7];
 
     for (let i = 0; i <= button.length; i++) {
         function shiftCheck () {

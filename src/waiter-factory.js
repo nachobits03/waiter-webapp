@@ -32,14 +32,19 @@ module.exports = function (waiterdb) {
         let waiters = allWaiters.map(name => name.waiter);
         for (let waiter of waiters) {
             if (name === waiter) {
-                console.log('here', waiter);
                 return true;
-            } 
+            }
         }
+    }
+
+    async function addShift (waiter, day) {
+        let waiterid = await waiterdb.waiter(waiter);
+        console.log(waiterid);
     }
 
     return {
         sort,
-        waiterCheck
+        waiterCheck,
+        addShift
     };
 };
