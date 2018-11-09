@@ -1,14 +1,13 @@
 <div class='sub-form'>
-<form action="/shifts-update" method="POST" class='subForm' id="formid">
+<form action="/shifts-update/{{waiter}}" method="POST" class='subForm' id="formid">
   
-  <input type="radio" name='mon'value=0 id='shift'>
-    <input type="radio" name='tues'value=0 id='shift'>
-    <input type="radio" name='wed'value=0 id='shift'>
-    <input type="radio" name='thur'value=0 id='shift'>
-    <input type="radio" name='fri'value=0 id='shift'>
-    <input type="radio" name='sat'value=0 id='shift'>
-    <input type="radio" name='sun'value=0 id='shift'>
-    <input type="text" name = 'waiter' value='{{waiter}}'>
+  <input type="radio" name='mon'value=1 id='shift'>
+    <input type="radio" name='tues'value=2 id='shift'>
+    <input type="radio" name='wed'value=3 id='shift'>
+    <input type="radio" name='thur'value=4 id='shift'>
+    <input type="radio" name='fri'value=5 id='shift'>
+    <input type="radio" name='sat'value=6id='shift'>
+    <input type="radio" name='sun'value=7 id='shift'>
     <input type="submit" name='submit' >
 
 </form>
@@ -16,7 +15,7 @@
 
 <div class='card'>
 <div class='shift'>
-<h2>Welcome {{waiter}}! Please select which days you're available for the week.</h2>
+<h2>Welcome <strong>{{waiter}}</strong>! Please select which days you're available for the week.</h2>
 
   <label for="mon"><button class='button' >Monday</button></label>
 

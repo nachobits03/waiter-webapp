@@ -7,6 +7,7 @@ module.exports = function (waiterdb) {
 
         for (let workdays of allWorkdays) {
             let stacker = [];
+            let status;
             let workday = workdays.workday;
 
             for (let shift of allShifts) {
@@ -15,11 +16,19 @@ module.exports = function (waiterdb) {
                     // console.log(shift.waiter)
                     stacker.push(shift.waiter);
                 };
+                if (stacker.length < 3) {
+                    status = 'understaffed';
+                } else if (stacker.length === 3) {
+                    status = 'fullystaffed';
+                } else if (stacker.length > 3) {
+                    status = 'overstaffed';
+                }
             }
             // console.log(stacker)
             waiterList.push(
                 { day: workday,
-                    waiters: stacker }
+                    waiters: stacker,
+                    status: status }
             );
         }
         console.log('this', waiterList);
@@ -38,8 +47,10 @@ module.exports = function (waiterdb) {
     }
 
     async function addShift (waiter, day) {
-        let waiterid = await waiterdb.waiter(waiter);
+        let waiterCurrent = await waiterdb.waiter(waiter);
+        let waiterid = waiterCurrent.waiterid;
         console.log(waiterid);
+        await waiterdb.addShifts(waiterid, day);
     }
 
     return {

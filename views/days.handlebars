@@ -5,8 +5,8 @@
 <table>
 
 <tr>
-{{#each allDays}}
-<th><h1>{{workday}}</h1></th>
+{{#each allShifts}}
+<th class='{{status}}'><h1>{{day}}</h1></th>
 {{/each}}
       </tr>
 
@@ -17,8 +17,6 @@
        {{!-- <ul> --}}
                 {{#each waiters}}  
        <strong><ul>{{this}}</ul></strong>
-       {{else}}
-              <strong><ul>N/A</ul></strong>
              {{/each}}   
        {{!-- </ul> --}}
        </td>

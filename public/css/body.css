@@ -77,11 +77,17 @@ margin:auto;
     .weekSchedule th, td {
 margin: auto;
 width:11.5vw;
+text-transform: capitalize;
   }
 
   .weekSchedule td ul {
   text-align: center;
   margin-left:-3vw;
+  }
+
+  h2 strong{
+    color:green;
+    text-transform: capitalize;
   }
    
    

@@ -28,22 +28,31 @@ module.exports = function (pool) {
     }
 
     async function waiter (waiter) {
+        console.log(waiter);
         try {
-            let currentWaiter = await pool.query('select 1 waiterid from waiters where waiter = $1 limit 1', [waiter]);
-            return currentWaiter.rows;
+            let currentWaiter = await pool.query('select waiterid from waiters where waiter = ($1) limit 1', [waiter]);
+            return currentWaiter.rows[0];
         } catch (err) {
             console.error(err);
         }
     }
 
-    async function addShifts(waiter, shift){
-        
+    async function addShifts (waiterid, shift) {
+        try {            
+            if (waiterid !== '' && shift !== '') {
+                let delet = await pool.query('delete from shifts where waiterid = $1', [waiterid])
+                let add = await pool.query('insert into shifts (waiterid, workdayid) values ($1, $2)', [waiterid, shift]);
+            }
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     return {
         allShifts,
         allWaiters,
         allDays,
-        waiter
+        waiter,
+        addShifts
     };
 };

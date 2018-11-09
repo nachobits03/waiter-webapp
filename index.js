@@ -58,7 +58,7 @@ app.get('/shifts/:waiter', route.shifts);
 
 app.post('/waiter-logged', route.logged);
 
-app.post('/shifts-update', route.update);
+app.post('/shifts-update/:waiter', route.update);
 
 let PORT = process.env.PORT || 3008;
 

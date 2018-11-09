@@ -8,13 +8,13 @@ window.addEventListener('DOMContentLoaded', function () {
         function shiftCheck () {
             if (shift[i].checked === false) {
                 shift[i].checked = true;
-                shift[i].value = days[i];
-                console.log(shift[i].value);
+                // shift[i].value = days[i];
+
                 button[i].classList.add('clicked');
             } else if (shift[i].checked === true) {
                 shift[i].checked = false;
-                shift[i].value = 1;
-                console.log(shift[i].value);
+                // shift[i].value = 1;
+
                 button[i].classList.remove('clicked');
             }
         }

@@ -94,3 +94,15 @@ background-color: grey;
     transition:0.2s linear;
     background:#996a70;
 }
+
+.understaffed {
+  background-color: red;
+}
+
+.fullystaffed {
+  background-color: green;
+}
+
+.overstaffed {
+  background-color: orange;
+}
