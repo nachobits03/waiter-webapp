@@ -53,9 +53,16 @@ module.exports = function (waiterdb) {
         await waiterdb.addShifts(waiterid, day);
     }
 
+    async function clearOld (waiter) {
+        let waiterCurrent = await waiterdb.waiter(waiter);
+        let waiterid = waiterCurrent.waiterid;
+        await waiterdb.clearOld(waiterid);
+    }
+
     return {
         sort,
         waiterCheck,
-        addShift
+        addShift,
+        clearOld
     };
 };

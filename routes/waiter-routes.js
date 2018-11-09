@@ -44,7 +44,8 @@ module.exports = function (factory, waiterdb) {
         let sat = req.body.sat;
         let sun = req.body.sun;
         let days = [mon, tues, wed, thur, fri, sat, sun];
-        console.log('hereeee', waiter)
+        console.log('hereeee', waiter);
+        await factory.clearOld(waiter);
         for (let day of days) {
             if (day !== undefined) {
                 await factory.addShift(waiter, day);

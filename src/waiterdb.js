@@ -38,10 +38,19 @@ module.exports = function (pool) {
     }
 
     async function addShifts (waiterid, shift) {
-        try {            
+        try {
             if (waiterid !== '' && shift !== '') {
-                let delet = await pool.query('delete from shifts where waiterid = $1', [waiterid])
-                let add = await pool.query('insert into shifts (waiterid, workdayid) values ($1, $2)', [waiterid, shift]);
+                await pool.query('insert into shifts (waiterid, workdayid) values ($1, $2)', [waiterid, shift]);
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    async function clearOld (waiterid) {
+        try {
+            if (waiterid !== '') {
+                await pool.query('delete from shifts where waiterid = $1', [waiterid]);
             }
         } catch (err) {
             console.error(err);
@@ -53,6 +62,7 @@ module.exports = function (pool) {
         allWaiters,
         allDays,
         waiter,
-        addShifts
+        addShifts,
+        clearOld
     };
 };
