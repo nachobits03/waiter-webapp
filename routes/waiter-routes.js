@@ -17,10 +17,14 @@ module.exports = function (factory, waiterdb) {
             allDays
         });
     }
-    function shifts (req, res) {
+    async function shifts (req, res) {
         let waiter = req.params.waiter;
+        let shifts = await factory.shiftView(waiter);
+        console.log(shifts);
         res.render('waiter-shifts',
-            { waiter });
+            { waiter,
+                shifts
+                });
     }
 
     async function logged (req, res) {

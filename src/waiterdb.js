@@ -57,12 +57,20 @@ module.exports = function (pool) {
         }
     }
 
+    async function currentWaiterShift (waiter) {
+        let shifts = await pool.query('select waiters.waiter, workdays.workday from waiters inner join shifts on waiters.waiterid = shifts.waiterid inner join workdays on workdays.workdayid = shifts.workdayid where waiter = $1', [waiter]);
+        // console.log(shifts.rows)
+        return shifts.rows;
+
+    }
+
     return {
         allShifts,
         allWaiters,
         allDays,
         waiter,
         addShifts,
-        clearOld
+        clearOld,
+        currentWaiterShift
     };
 };

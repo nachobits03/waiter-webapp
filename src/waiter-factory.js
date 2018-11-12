@@ -59,10 +59,47 @@ module.exports = function (waiterdb) {
         await waiterdb.clearOld(waiterid);
     }
 
+    async function shiftView (waiter) {
+        let weekdays = await waiterdb.allDays();
+        let selectedDays = await waiterdb.currentWaiterShift(waiter);
+        if (selectedDays.length === 0) {
+            return weekdays;
+        } else {
+            let shifts = [];
+
+            for (let day of weekdays) {
+                for (sd of selectedDays) {
+                    if (day.workday === sd && shifts.workday !== day) {
+                        shifts.push({
+                            workday: day.workday,
+                            value: 'checked'
+                        });
+                    }
+                }
+            }
+
+            // let shifts = weekdays.map(function (weekdays) {
+            //     for (let sd of selectedDays) {
+            //         // console.log(sd.workday, weekdays.workday);
+            //         if (sd.workday === weekdays.workday) {
+            //             return { workday: weekdays.workday,
+            //                 value: 'checked' };
+            //         } else if (sd.workday !== weekdays.workday) {
+            //             return { workday: weekdays.workday,
+            //                 value: 'unchecked' };
+            //         }
+            //     }
+            // });
+
+            return shifts;
+        }
+    }
+
     return {
         sort,
         waiterCheck,
         addShift,
-        clearOld
+        clearOld,
+        shiftView
     };
 };

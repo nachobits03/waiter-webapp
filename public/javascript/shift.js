@@ -7,10 +7,10 @@ window.addEventListener('DOMContentLoaded', function () {
             if (shift[i].checked === false) {
                 shift[i].checked = true;
 
-                button[i].classList.add('clicked');
+                button[i].classList.add('checked');
             } else if (shift[i].checked === true) {
 
-                button[i].classList.remove('clicked');
+                button[i].classList.remove('unchecked');
             }
         }
 
