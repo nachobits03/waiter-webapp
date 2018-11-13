@@ -4,14 +4,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
     for (let i = 0; i <= button.length; i++) {
 
-
-        function setup () {
-            if (button[i].classList.conatains('checked')) {
-                shift[i].checked = true;
-                console.log('lalala')
-            }
-        }
-
         function shiftCheck () {
             if (shift[i].checked === false) {
                 shift[i].checked = true;

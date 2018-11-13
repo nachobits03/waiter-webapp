@@ -64,6 +64,10 @@ module.exports = function (pool) {
 
     }
 
+    async function reset () {
+        await pool.query('truncate table shifts');
+    }
+
     return {
         allShifts,
         allWaiters,
@@ -71,6 +75,7 @@ module.exports = function (pool) {
         waiter,
         addShifts,
         clearOld,
-        currentWaiterShift
+        currentWaiterShift,
+        reset
     };
 };

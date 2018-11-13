@@ -7,7 +7,7 @@ module.exports = function (waiterdb) {
 
         for (let workdays of allWorkdays) {
             let stacker = [];
-            let status;
+            let status = 'understaffed';
             let workday = workdays.workday;
 
             for (let shift of allShifts) {
@@ -23,8 +23,11 @@ module.exports = function (waiterdb) {
                 } else if (stacker.length > 3) {
                     status = 'overstaffed';
                 }
+                
+
+                
             }
-            // console.log(stacker)
+            console.log(stacker.length)
             waiterList.push(
                 { day: workday,
                     waiters: stacker,

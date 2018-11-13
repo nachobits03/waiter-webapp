@@ -24,7 +24,7 @@ module.exports = function (factory, waiterdb) {
         res.render('waiter-shifts',
             { waiter,
                 shifts
-                });
+            });
     }
 
     async function logged (req, res) {
@@ -59,12 +59,22 @@ module.exports = function (factory, waiterdb) {
         res.redirect('/shifts/' + waiter);
     }
 
+    async function reset (req, res) {
+        try {
+            await waiterdb.reset();
+            res.redirect('/days');
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     return {
         waiterLog,
         home,
         days,
         shifts,
         logged,
-        update
+        update,
+        reset
     };
 };

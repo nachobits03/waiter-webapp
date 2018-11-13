@@ -60,6 +60,8 @@ app.post('/waiter-logged', route.logged);
 
 app.post('/shifts-update/:waiter', route.update);
 
+app.post('/reset-shifts', route.reset);
+
 let PORT = process.env.PORT || 3008;
 
 app.listen(PORT, function () {
