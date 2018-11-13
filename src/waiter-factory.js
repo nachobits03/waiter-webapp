@@ -60,38 +60,38 @@ module.exports = function (waiterdb) {
     }
 
     async function shiftView (waiter) {
-        let weekdays = await waiterdb.allDays();
-        let selectedDays = await waiterdb.currentWaiterShift(waiter);
-        if (selectedDays.length === 0) {
-            return weekdays;
-        } else {
+        try {
+            let weekdays = await waiterdb.allDays();
+            let selectedDays = await waiterdb.currentWaiterShift(waiter);
+            let shiftwork = selectedDays.map(input => input.workday);
+            let weekday = weekdays.map(input => input.workday);
             let shifts = [];
+            // console.log(shiftwork)
+            if (selectedDays.length === 0) {
+                return weekdays;
+            } else {
+                for (let shift of shiftwork) {
+                    for (let i = 0; i < weekday.length; i++) {
 
-            for (let day of weekdays) {
-                for (sd of selectedDays) {
-                    if (day.workday === sd && shifts.workday !== day) {
-                        shifts.push({
-                            workday: day.workday,
-                            value: 'checked'
-                        });
+                        if (shifts.length <= 6) {
+                            shifts.push({
+                                workday: weekday[i],
+                                value: 'unchecked'
+                            });
+                        }
+                        // console.log(shiftwork[i], weekday[i])
+                        if (shift === weekday[i]) {
+                        // console.log(shiftwork[i], weekday[i])
+                            shifts[i].value = 'oldchecked';
+                        }
+
                     }
-                }
+                };
+                console.log(shifts);
+                return shifts;
             }
-
-            // let shifts = weekdays.map(function (weekdays) {
-            //     for (let sd of selectedDays) {
-            //         // console.log(sd.workday, weekdays.workday);
-            //         if (sd.workday === weekdays.workday) {
-            //             return { workday: weekdays.workday,
-            //                 value: 'checked' };
-            //         } else if (sd.workday !== weekdays.workday) {
-            //             return { workday: weekdays.workday,
-            //                 value: 'unchecked' };
-            //         }
-            //     }
-            // });
-
-            return shifts;
+        } catch (err) {
+            console.error(err);
         }
     }
 
