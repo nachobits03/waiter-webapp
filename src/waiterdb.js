@@ -68,6 +68,14 @@ module.exports = function (pool) {
         await pool.query('truncate table shifts');
     }
 
+    async function deleteWaiter (waiter) {
+        let waiterid = await pool.query('select waiterid from waiters where waiter = ($1) limit 1', [waiter]);
+        await pool.query('delete from shifts where waiterid = $1', [waiterid]);
+        await pool.query(`DELETE FROM waiters WHERE waiter = $1`, [waiter]);
+        await pool.query('update waiters set waiterid = default');
+        await pool.query('alter sequence waiters_waiterid_seq restart 1');
+    }
+
     return {
         allShifts,
         allWaiters,
@@ -76,6 +84,7 @@ module.exports = function (pool) {
         addShifts,
         clearOld,
         currentWaiterShift,
-        reset
+        reset,
+        deleteWaiter
     };
 };

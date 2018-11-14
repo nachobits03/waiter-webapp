@@ -58,3 +58,39 @@
     color:white;
     margin-bottom:30px;
   }
+
+  .sign-waiteradd i.fa-user-plus{
+    padding:40px;
+    border-radius:50%;
+    background:#996a49;
+    color:white;
+    margin-bottom:30px;
+  }
+  
+
+  .addcard{
+    position:relative;
+    display: inline-block;
+    width:30%;
+    margin-top:20px; 
+    left:10%;
+    border:solid;
+    text-align:center;
+    box-shadow:  10px 10px 10px black;
+    background-color:darkgreen;
+    z-index: 2;
+  }
+
+  .allwaiters{
+    display: inline-block;
+    position:relative;
+    width:40%;
+    margin-top:20px; 
+    top:0%;
+    left:25%;
+    border:solid;
+    text-align:center;
+    box-shadow:  10px 10px 10px black;
+    background-color:darkgreen;
+    z-index: 2;
+  }

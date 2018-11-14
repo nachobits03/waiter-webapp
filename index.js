@@ -4,6 +4,8 @@ const exphbs = require('express-handlebars');
 const WaiterRoutes = require('./routes/waiter-routes.js');
 const waiterfactory = require('./src/waiter-factory.js');
 const waiterData = require('./src/waiterdb.js');
+const flash = require('express-flash');
+const session = require('express-session');
 
 const pg = require('pg');
 const app = express();
@@ -27,6 +29,13 @@ const waiterdb = waiterData(pool);
 const factory = waiterfactory(waiterdb);
 const route = WaiterRoutes(factory, waiterdb);
 
+app.use(session({
+    secret: '<add a secret string here>',
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use(flash());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -56,6 +65,8 @@ app.get('/waiter-login', route.waiterLog);
 
 app.get('/shifts/:waiter', route.shifts);
 
+app.get('/add-waiter', route.add);
+
 app.post('/waiter-logged', route.logged);
 
 app.post('/shifts-update/:waiter', route.update);
@@ -67,3 +78,5 @@ let PORT = process.env.PORT || 3008;
 app.listen(PORT, function () {
     console.log('App starting on port', PORT);
 });
+
+// req.flash('error', 'Please insert a valid registration number!');

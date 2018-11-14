@@ -68,6 +68,15 @@ module.exports = function (factory, waiterdb) {
         }
     }
 
+    async function add (req, res) {
+        try {
+           
+            res.render('waiter-create');
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     return {
         waiterLog,
         home,
@@ -75,6 +84,7 @@ module.exports = function (factory, waiterdb) {
         shifts,
         logged,
         update,
-        reset
+        reset,
+        add
     };
 };
