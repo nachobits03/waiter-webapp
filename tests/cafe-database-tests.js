@@ -3,9 +3,9 @@ const WaiterFactory = require('../src/waiter-factory.js');
 const WaiterDb = require('../src/waiterdb.js');
 const pg = require('pg');
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://nachobits:1997@localhost:5432/cafe';
+// const connectionString = process.env.DATABASE_URL || 'postgresql://nachobits:1997@localhost:5432/cafe';
 // const connectionString = process.env.DATABASE_URL || 'postgresql://coder:pg123@localhost:5432/cafe';
-// const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/cafe';
+const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/cafe';
 const Pool = pg.Pool;
 const pool = new Pool({
     connectionString
