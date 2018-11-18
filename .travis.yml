@@ -10,7 +10,7 @@ env:
 
 before_install:
   - psql -c 'create database codex;' -U postgres
-  - psql -U postgres -d codex -a -f tables.sql
+  - psql -U postgres -d codex -a -f cafe.sql
 
 addons:
   apt:
