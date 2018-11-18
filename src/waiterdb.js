@@ -28,7 +28,6 @@ module.exports = function (pool) {
     }
 
     async function waiter (waiter) {
-        console.log(waiter);
         try {
             let currentWaiter = await pool.query('select waiterid from waiters where waiter = ($1) limit 1', [waiter]);
             return currentWaiter.rows[0];

@@ -27,32 +27,36 @@ module.exports = function (waiterdb) {
 
                 
             }
-            console.log(stacker.length)
+          
             waiterList.push(
                 { day: workday,
                     waiters: stacker,
                     status: status }
             );
         }
-        console.log('this', waiterList);
+       
         return waiterList;
     }
 
     async function waiterCheck (name) {
+        try{
         let allWaiters = await waiterdb.allWaiters();
-        // console.log('here', waiters)
         let waiters = allWaiters.map(name => name.waiter);
         for (let waiter of waiters) {
             if (name === waiter) {
                 return true;
             }
         }
+        return false
+    }
+    catch(err){
+        console.error(err)
+    }
     }
 
     async function addShift (waiter, day) {
         let waiterCurrent = await waiterdb.waiter(waiter);
         let waiterid = waiterCurrent.waiterid;
-        console.log(waiterid);
         await waiterdb.addShifts(waiterid, day);
     }
 
