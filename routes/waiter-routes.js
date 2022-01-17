@@ -1,7 +1,4 @@
-module.exports = function (factory, waiterdb) {
-    function waiterLog (req, res) {
-        res.render('waiter-login');
-    }
+module.exports = function (factory, waiterdb, app) {
 
     function home (req, res) {
         res.render('login', {layout: 'manager'});
@@ -77,14 +74,25 @@ module.exports = function (factory, waiterdb) {
         }
     }
 
+    async function tester(req, res){
+        try{
+            req.session.user = "nath"
+            let currUser = (req.session.user)
+            res.render('test', {layout: 'manager', currUser});
+
+        }catch(err){
+            console.error(err)
+        }
+    }
+
     return {
-        waiterLog,
         home,
         days,
         shifts,
         logged,
         update,
         reset,
-        add
+        add,
+        tester
     };
 };

@@ -8,6 +8,8 @@ const waiterData = require('./src/waiterdb.js');
 const flash = require('express-flash');
 const session = require('express-session');
 
+const NewWaiterRoutes = require('./routes/waiter-routes-new.js');
+
 const pg = require('pg');
 const app = express();
 
@@ -33,12 +35,14 @@ const pool = new Pool({
 // Factory Function instances
 const waiterdb = waiterData(pool);
 const factory = waiterfactory(waiterdb);
-const route = WaiterRoutes(factory, waiterdb);
+const route = WaiterRoutes(factory, waiterdb, app);
+const routes = NewWaiterRoutes(factory, waiterdb, app);
 
 app.use(session({
     secret: '<add a secret string here>',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {}
 }));
 
 app.use(flash());
@@ -67,7 +71,7 @@ app.get('/', route.home);
 
 app.get('/days', route.days);
 
-app.get('/waiter-login', route.waiterLog);
+app.get('/test-route', route.tester)
 
 app.get('/shifts/:waiter', route.shifts);
 
@@ -78,6 +82,12 @@ app.post('/waiter-logged', route.logged);
 app.post('/shifts-update/:waiter', route.update);
 
 app.post('/reset-shifts', route.reset);
+
+
+app.get('/waiter-login', routes.waiterLogin);
+app.post('/sign-in', routes.signIn)
+app.get("/waiter/:waiter", routes.waiterHome)
+
 
 let PORT = process.env.PORT || 3008;
 
