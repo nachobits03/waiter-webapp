@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
+const {engine} = require('express-handlebars');
 const WaiterRoutes = require('./routes/waiter-routes.js');
 const waiterfactory = require('./src/waiter-factory.js');
 const waiterData = require('./src/waiterdb.js');
@@ -9,6 +10,10 @@ const session = require('express-session');
 
 const pg = require('pg');
 const app = express();
+
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set('views', './views');
 
 const Pool = pg.Pool;
 
@@ -43,19 +48,19 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.engine('handlebars', exphbs({
-    defaultLayout: 'main'
-    // helpers: {
-    //     'shifts':
-    //     function () {
-    //         if (this.selected) {
-    //             return 'shifts';
-    //         }
-    //     }
-    // }
-}));
+// app.engine('handlebars', exphbs({
+//     defaultLayout: 'main'
+//     // helpers: {
+//     //     'shifts':
+//     //     function () {
+//     //         if (this.selected) {
+//     //             return 'shifts';
+//     //         }
+//     //     }
+//     // }
+// }));
 
-app.set('view engine', 'handlebars');
+// app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', route.home);

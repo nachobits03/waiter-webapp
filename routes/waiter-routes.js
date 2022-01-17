@@ -4,7 +4,7 @@ module.exports = function (factory, waiterdb) {
     }
 
     function home (req, res) {
-        res.render('home');
+        res.render('login', {layout: 'manager'});
     }
 
     async function days (req, res) {
