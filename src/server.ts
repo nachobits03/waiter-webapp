@@ -1,6 +1,7 @@
 import logger from './appconfig/logger'
 import App from './app';
 import { Config } from './appconfig';
+import mongoose from 'mongoose';
 
 interface STARTUP {
     API_PORT?: string;
@@ -21,6 +22,16 @@ interface STARTUP {
         }: STARTUP = config._config();
 
         const app = new App().app;
+
+        logger.info("Connecting to mongo database...")
+        mongoose.connect(MONGO_URL || "");
+        const db = await mongoose.connection;
+
+        // Event listeners for connection events
+        db.on('error', error => {logger.info(`MongoDB connection error: ${error}`)});
+        db.once('open', () => {
+            console.log('Connected to MongoDB successfully!');
+        });
 
         const server = app.listen(API_PORT, () => {
             logger.info(`App ${APP_NAME || 'Unnamed'} started on Port: ${API_PORT}`);

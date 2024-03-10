@@ -11,11 +11,9 @@ interface ENV {
 
 export class Config {
     _config(): ENV {
-        // dotenv.config({path: path.resolve( `./../../config/.env.${environment}`) });
-        // console.log(dotenv.config.toString())
         return {
             API_PORT: process.env.API_PORT,
-            APP_NAME: process.env.APP_NAME, // Corrected variable name here
+            APP_NAME: process.env.APP_NAME, 
             MONGO_URL: process.env.MONGO_URL
         };
     }
